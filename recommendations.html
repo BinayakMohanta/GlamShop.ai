@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Recommendations — Glamshop.ai</title><link rel="stylesheet" href="css/styles.css"></head>
+<body>
+<header class="container nav">
+  <div class="brand"><img src="assets/logo.svg" alt="Glamshop.ai"></div>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="recommendations.html">Recommendations</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section style="margin-top:20px">
+    <h2>Use glamAI for Personalized Recommendations</h2>
+    <p>Tell us your preferences — this is a simple client-side matcher (no server).</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px">
+      <select id="prefStyle" class="select">
+        <option value="">Any style</option><option value="casual">Casual</option><option value="formal">Formal</option><option value="bohemian">Bohemian</option><option value="minimal">Minimal</option><option value="trendy">Trendy</option>
+      </select>
+      <select id="prefBudget" class="select">
+        <option value="">Any budget</option><option value="budget">Budget Friendly</option><option value="mid">Mid Range</option><option value="luxury">Luxury</option>
+      </select>
+    </div>
+    <div style="margin-top:12px">
+      <button id="useGlamAI" class="btn">Use glamAI to get recommendations</button>
+    </div>
+
+    <div id="rec-results" style="margin-top:20px" class="grid">
+      <!-- results injected by js -->
+    </div>
+  </section>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
