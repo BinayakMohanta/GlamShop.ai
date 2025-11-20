@@ -1,0 +1,711 @@
+const PRODUCTS = [
+  {
+    "id": 1,
+    "name": "Pastel Dream Dress",
+    "category": "clothing",
+    "price": 2999,
+    "brand": "StyleHaven",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1520975911162-7f6b2d6b0f3b?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Casual",
+      "Summer",
+      "Pastel"
+    ],
+    "season": "summer"
+  },
+  {
+    "id": 2,
+    "name": "Neon Glow Lipstick",
+    "category": "makeup",
+    "price": 799,
+    "brand": "GlamLux",
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1520975910894-7b5f4a6f6c2b?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Bold",
+      "Evening",
+      "Neon"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 3,
+    "name": "Minimalist Gold Earrings",
+    "category": "accessories",
+    "price": 1299,
+    "brand": "Elegance",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1503342217505-b0a15d21e9bd?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Minimal",
+      "Elegant",
+      "Gold"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 4,
+    "name": "Oversized Blazer",
+    "category": "clothing",
+    "price": 4499,
+    "brand": "UrbanChic",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Professional",
+      "Fall",
+      "Trendy"
+    ],
+    "season": "fall"
+  },
+  {
+    "id": 5,
+    "name": "Glowy Skin Foundation",
+    "category": "makeup",
+    "price": 1199,
+    "brand": "PureGlow",
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Natural",
+      "Daily",
+      "Dewy"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 6,
+    "name": "Vintage Leather Bag",
+    "category": "accessories",
+    "price": 6999,
+    "brand": "LuxeCarry",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1503342452485-86f7b3f3b6a8?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Vintage",
+      "Classic",
+      "Leather"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 7,
+    "name": "Floral Maxi Dress",
+    "category": "clothing",
+    "price": 3499,
+    "brand": "FloraFashion",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Bohemian",
+      "Spring",
+      "Floral"
+    ],
+    "season": "spring"
+  },
+  {
+    "id": 8,
+    "name": "Shimmer Eyeshadow Palette",
+    "category": "makeup",
+    "price": 1599,
+    "brand": "ColorPop",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1511300966949-9d03a14f6b4a?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Glam",
+      "Party",
+      "Shimmer"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 9,
+    "name": "Classic White Shirt",
+    "category": "clothing",
+    "price": 1799,
+    "brand": "TailorMade",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Formal",
+      "Everyday"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 10,
+    "name": "Matte Liquid Lipstick",
+    "category": "makeup",
+    "price": 699,
+    "brand": "VelvetKiss",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Matte",
+      "Longwear"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 11,
+    "name": "Pearl Drop Necklace",
+    "category": "accessories",
+    "price": 2499,
+    "brand": "PearlAura",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1520975911063-9f77f0b2f4b5?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Elegant",
+      "Wedding"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 12,
+    "name": "Denim Mini Skirt",
+    "category": "clothing",
+    "price": 2199,
+    "brand": "RetroVibe",
+    "rating": 4.4,
+    "image": "https://images.unsplash.com/photo-1520975911208-3a6f4b6b7c2a?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Casual",
+      "Spring"
+    ],
+    "season": "spring"
+  },
+  {
+    "id": 13,
+    "name": "Contour & Highlight Kit",
+    "category": "makeup",
+    "price": 1399,
+    "brand": "SculptPro",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1520975911162-7f6b2d6b0f3b?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Sculpt",
+      "Daily"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 14,
+    "name": "Chain Strap Crossbody",
+    "category": "accessories",
+    "price": 3299,
+    "brand": "CityCarry",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1520975910894-7b5f4a6f6c2b?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Street",
+      "Compact"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 15,
+    "name": "Boho Embroidered Top",
+    "category": "clothing",
+    "price": 1799,
+    "brand": "BohoBelle",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1503342217505-b0a15d21e9bd?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Bohemian",
+      "Summer"
+    ],
+    "season": "summer"
+  },
+  {
+    "id": 16,
+    "name": "Waterproof Mascara",
+    "category": "makeup",
+    "price": 499,
+    "brand": "LashLift",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Waterproof",
+      "Volume"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 17,
+    "name": "Leather Belt (Tan)",
+    "category": "accessories",
+    "price": 899,
+    "brand": "BuckleUp",
+    "rating": 4.4,
+    "image": "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Classic",
+      "Everyday"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 18,
+    "name": "Pleated Trousers",
+    "category": "clothing",
+    "price": 2599,
+    "brand": "OfficeWear",
+    "rating": 4.3,
+    "image": "https://images.unsplash.com/photo-1503342452485-86f7b3f3b6a8?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Formal",
+      "Work"
+    ],
+    "season": "fall"
+  },
+  {
+    "id": 19,
+    "name": "Highlighter Stick",
+    "category": "makeup",
+    "price": 599,
+    "brand": "GlowMe",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Portable",
+      "Dewy"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 20,
+    "name": "Aviator Sunglasses",
+    "category": "accessories",
+    "price": 1099,
+    "brand": "SunShield",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1511300966949-9d03a14f6b4a?w=1200&h=1500&fit=crop",
+    "tags": [
+      "UV",
+      "Summer"
+    ],
+    "season": "summer"
+  },
+  {
+    "id": 21,
+    "name": "Silk Slip Dress",
+    "category": "clothing",
+    "price": 4999,
+    "brand": "SilkRoad",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Evening",
+      "Luxury"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 22,
+    "name": "Bronzer Palette",
+    "category": "makeup",
+    "price": 1299,
+    "brand": "SunKissed",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Warm",
+      "Sculpt"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 23,
+    "name": "Statement Hoop Earrings",
+    "category": "accessories",
+    "price": 799,
+    "brand": "BoldLoops",
+    "rating": 4.4,
+    "image": "https://images.unsplash.com/photo-1520975911063-9f77f0b2f4b5?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Trendy",
+      "Party"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 24,
+    "name": "Checked Winter Coat",
+    "category": "clothing",
+    "price": 6999,
+    "brand": "WarmNest",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1520975911208-3a6f4b6b7c2a?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Winter",
+      "Cozy"
+    ],
+    "season": "winter"
+  },
+  {
+    "id": 25,
+    "name": "Liquid Eyeliner",
+    "category": "makeup",
+    "price": 349,
+    "brand": "FineLine",
+    "rating": 4.3,
+    "image": "https://images.unsplash.com/photo-1520975911162-7f6b2d6b0f3b?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Precision",
+      "Everyday"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 26,
+    "name": "Canvas Tote Bag",
+    "category": "accessories",
+    "price": 699,
+    "brand": "EcoCarry",
+    "rating": 4.2,
+    "image": "https://images.unsplash.com/photo-1520975910894-7b5f4a6f6c2b?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Casual",
+      "Eco"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 27,
+    "name": "Ribbed Knit Sweater",
+    "category": "clothing",
+    "price": 2399,
+    "brand": "CozyCorner",
+    "rating": 4.4,
+    "image": "https://images.unsplash.com/photo-1503342217505-b0a15d21e9bd?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Winter",
+      "Comfort"
+    ],
+    "season": "winter"
+  },
+  {
+    "id": 28,
+    "name": "Tinted Moisturizer",
+    "category": "makeup",
+    "price": 899,
+    "brand": "SkinTint",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Light",
+      "Daily"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 29,
+    "name": "Stacked Rings Set",
+    "category": "accessories",
+    "price": 999,
+    "brand": "RingNest",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Minimal",
+      "Layering"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 30,
+    "name": "Cropped Leather Jacket",
+    "category": "clothing",
+    "price": 5599,
+    "brand": "MotoStyle",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1503342452485-86f7b3f3b6a8?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Edgy",
+      "Fall"
+    ],
+    "season": "fall"
+  },
+  {
+    "id": 31,
+    "name": "Cream Blush Compact",
+    "category": "makeup",
+    "price": 749,
+    "brand": "Cheeky",
+    "rating": 4.4,
+    "image": "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Cream",
+      "Natural"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 32,
+    "name": "Silk Scarf",
+    "category": "accessories",
+    "price": 1899,
+    "brand": "ScarletSilks",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1511300966949-9d03a14f6b4a?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Elegant",
+      "Spring"
+    ],
+    "season": "spring"
+  },
+  {
+    "id": 33,
+    "name": "Wide-leg Jeans",
+    "category": "clothing",
+    "price": 2799,
+    "brand": "DenimLab",
+    "rating": 4.3,
+    "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Casual",
+      "Everyday"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 34,
+    "name": "Brow Sculpt Gel",
+    "category": "makeup",
+    "price": 399,
+    "brand": "BrowPro",
+    "rating": 4.2,
+    "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Hold",
+      "Natural"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 35,
+    "name": "Tassel Shoulder Bag",
+    "category": "accessories",
+    "price": 2599,
+    "brand": "BohoBags",
+    "rating": 4.4,
+    "image": "https://images.unsplash.com/photo-1520975911063-9f77f0b2f4b5?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Boho",
+      "Festival"
+    ],
+    "season": "summer"
+  },
+  {
+    "id": 36,
+    "name": "Satin Pajama Set",
+    "category": "clothing",
+    "price": 2199,
+    "brand": "NightLuxe",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1520975911208-3a6f4b6b7c2a?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Loungewear",
+      "Comfort"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 37,
+    "name": "Setting Spray",
+    "category": "makeup",
+    "price": 549,
+    "brand": "LockIt",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1520975911162-7f6b2d6b0f3b?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Longwear",
+      "Finish"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 38,
+    "name": "Beaded Anklet",
+    "category": "accessories",
+    "price": 499,
+    "brand": "AnkletArt",
+    "rating": 4.3,
+    "image": "https://images.unsplash.com/photo-1520975910894-7b5f4a6f6c2b?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Beach",
+      "Summer"
+    ],
+    "season": "summer"
+  },
+  {
+    "id": 39,
+    "name": "Tailored Pencil Skirt",
+    "category": "clothing",
+    "price": 2899,
+    "brand": "OfficeWear",
+    "rating": 4.4,
+    "image": "https://images.unsplash.com/photo-1503342217505-b0a15d21e9bd?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Formal",
+      "Work"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 40,
+    "name": "Perfume Roller (10ml)",
+    "category": "makeup",
+    "price": 999,
+    "brand": "AromaNote",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Scent",
+      "Travel"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 41,
+    "name": "Block Heel Sandals",
+    "category": "clothing",
+    "price": 2299,
+    "brand": "StepUp",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Party",
+      "Comfort"
+    ],
+    "season": "summer"
+  },
+  {
+    "id": 42,
+    "name": "Travel Makeup Brush Set",
+    "category": "makeup",
+    "price": 1199,
+    "brand": "BrushWorks",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1503342452485-86f7b3f3b6a8?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Travel",
+      "Complete"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 43,
+    "name": "Minimal Wallet",
+    "category": "accessories",
+    "price": 799,
+    "brand": "PocketPro",
+    "rating": 4.2,
+    "image": "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Slim",
+      "Everyday"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 44,
+    "name": "Embroidered Anarkali",
+    "category": "clothing",
+    "price": 8999,
+    "brand": "TraditionWeave",
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1511300966949-9d03a14f6b4a?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Wedding",
+      "Festive"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 45,
+    "name": "Lip & Cheek Tint",
+    "category": "makeup",
+    "price": 649,
+    "brand": "TwoTone",
+    "rating": 4.4,
+    "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Multiuse",
+      "Natural"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 46,
+    "name": "Rugged Travel Backpack",
+    "category": "accessories",
+    "price": 3499,
+    "brand": "TrailMate",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Travel",
+      "Durable"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 47,
+    "name": "Cowl Neck Top",
+    "category": "clothing",
+    "price": 1699,
+    "brand": "SoftLines",
+    "rating": 4.3,
+    "image": "https://images.unsplash.com/photo-1520975911063-9f77f0b2f4b5?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Casual",
+      "Layer"
+    ],
+    "season": "fall"
+  },
+  {
+    "id": 48,
+    "name": "Compact Mirror Palette",
+    "category": "makeup",
+    "price": 499,
+    "brand": "MirrorMe",
+    "rating": 4.1,
+    "image": "https://images.unsplash.com/photo-1520975911208-3a6f4b6b7c2a?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Portable",
+      "Everyday"
+    ],
+    "season": "all"
+  },
+  {
+    "id": 49,
+    "name": "Summer Straw Hat",
+    "category": "accessories",
+    "price": 599,
+    "brand": "SunShade",
+    "rating": 4.2,
+    "image": "https://images.unsplash.com/photo-1520975911162-7f6b2d6b0f3b?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Beach",
+      "Summer"
+    ],
+    "season": "summer"
+  },
+  {
+    "id": 50,
+    "name": "Tailored Blazer Dress",
+    "category": "clothing",
+    "price": 5999,
+    "brand": "ChicTailor",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1520975910894-7b5f4a6f6c2b?w=1200&h=1500&fit=crop",
+    "tags": [
+      "Formal",
+      "Evening"
+    ],
+    "season": "all"
+  }
+];
+export default PRODUCTS;
