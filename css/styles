@@ -1,0 +1,32 @@
+:root{
+  --bg1: #FFF7FB;
+  --accent1: #FBC2EB;
+  --accent2: #A6C1EE;
+  --muted: #6B7280;
+  --card: #ffffff;
+  --glass: rgba(255,255,255,0.7);
+}
+*{box-sizing:border-box}
+body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:linear-gradient(180deg,var(--bg1),#F4F8FF); color:#111;}
+.container{max-width:1200px;margin:0 auto;padding:20px;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{height:40px}
+.nav-links{display:flex;gap:18px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:600}
+.hero{display:flex;align-items:center;gap:30px;background:linear-gradient(90deg,var(--accent1),var(--accent2));border-radius:16px;padding:48px;color:#fff;margin:18px 0}
+.hero h1{font-size:36px;margin:0}
+.hero p{margin:6px 0 0 0;color:rgba(255,255,255,0.95)}
+.btn{background:linear-gradient(90deg,#ff9ecb,#b19cff);color:#fff;padding:12px 20px;border-radius:999px;border:none;cursor:pointer;font-weight:700}
+.searchbar{display:flex;gap:10px;background:var(--card);padding:12px;border-radius:12px;box-shadow:0 6px 18px rgba(16,24,40,0.06);align-items:center}
+.searchbar input{border:0;outline:0;font-size:16px;background:transparent}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+.card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(16,24,40,0.06);display:flex;flex-direction:column}
+.card img{width:100%;height:240px;object-fit:cover}
+.card .pad{padding:12px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.price{font-size:18px;font-weight:800;color:#111}
+.tag{display:inline-block;background:linear-gradient(90deg,#fff,#f8f9ff);padding:6px 10px;border-radius:999px;font-size:12px;color:var(--muted);margin-right:6px}
+.footer{background:linear-gradient(90deg,#f1f5ff,#fff);padding:36px;border-radius:12px;margin-top:40px}
+.controls{display:flex;gap:10px;flex-wrap:wrap}
+.select, .input{padding:10px 12px;border-radius:10px;border:1px solid #e6e9f2;background:white}
+@media(max-width:720px){.hero{flex-direction:column;padding:28px}.hero h1{font-size:28px}.nav-links{display:none}}
