@@ -1,0 +1,85 @@
+import PRODUCTS from './products.js';
+
+function el(q){return document.querySelector(q)}
+function elAll(q){return document.querySelectorAll(q)}
+
+let products = PRODUCTS;
+const grid = el('#product-grid');
+const searchInput = el('#search');
+const categoryButtons = elAll('.cat-btn');
+const priceSelect = el('#priceRange');
+const seasonSelect = el('#season');
+
+function currency(x){return '₹'+x.toLocaleString('en-IN');}
+
+function render(list){
+  grid.innerHTML = '';
+  if(!list.length){ grid.innerHTML = '<p style="padding:20px">No items found.</p>'; return;}
+  list.forEach(p=>{
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `<img src="${p.image}" alt="${p.name}"/><div class="pad"><div><p style="font-size:13px;color:#9b6b8b">${p.brand}</p><h3>${p.name}</h3></div><div><div style="margin-top:10px"><span class="price">${currency(p.price)}</span></div><div style="margin-top:8px"><button class="btn add" data-id="${p.id}">Add</button></div></div></div>`;
+    grid.appendChild(card);
+  });
+  document.querySelectorAll('.btn.add').forEach(b=>{
+    b.onclick = ()=>{ addToCart(parseInt(b.dataset.id)); }
+  });
+}
+
+function applyFilters(){
+  let list = products.slice();
+  const q = searchInput.value.trim().toLowerCase();
+  if(q) list = list.filter(p=>p.name.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q));
+  const cat = document.querySelector('.cat-btn.active')?.dataset.cat || 'all';
+  if(cat !== 'all') list = list.filter(p=>p.category===cat);
+  const pr = priceSelect.value;
+  if(pr==='under1000') list = list.filter(p=>p.price<1000);
+  if(pr==='1000to3000') list = list.filter(p=>p.price>=1000 && p.price<=3000);
+  if(pr==='over3000') list = list.filter(p=>p.price>3000);
+  const season = seasonSelect.value;
+  if(season && season!=='all') list = list.filter(p=>p.season==='all' || p.season===season);
+  render(list);
+}
+
+searchInput.addEventListener('input',()=>applyFilters());
+priceSelect.addEventListener('change',()=>applyFilters());
+seasonSelect.addEventListener('change',()=>applyFilters());
+categoryButtons.forEach(b=>{ b.addEventListener('click',()=>{
+  document.querySelectorAll('.cat-btn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  applyFilters();
+})});
+
+function addToCart(id){
+  let cart = JSON.parse(localStorage.getItem('glam_cart')||'[]');
+  const item = products.find(p=>p.id===id);
+  cart.push(item);
+  localStorage.setItem('glam_cart', JSON.stringify(cart));
+  alert(item.name + ' added to cart (local only)');
+}
+
+// initial render
+render(products);
+
+// recommendations form handling simple: show top matches
+const recBtn = el('#useGlamAI');
+if(recBtn){
+  recBtn.addEventListener('click', ()=>{
+    const style = el('#prefStyle').value;
+    const budget = el('#prefBudget').value;
+    let list = products.slice();
+    if(budget==='budget') list = list.filter(p=>p.price<=1500);
+    if(budget==='mid') list = list.filter(p=>p.price>1500 && p.price<=5000);
+    if(budget==='luxury') list = list.filter(p=>p.price>5000);
+    if(style) list = list.filter(p=> p.tags.map(t=>t.toLowerCase()).includes(style.toLowerCase()) || p.category===style);
+    const out = el('#rec-results');
+    out.innerHTML = '';
+    (list.slice(0,8)).forEach(p=>{
+      const d = document.createElement('div');
+      d.className='card';
+      d.innerHTML = `<img src="${p.image}" alt="${p.name}"/><div class="pad"><h4>${p.name}</h4><p class="price">${currency(p.price)}</p></div>`;
+      out.appendChild(d);
+    });
+    if(!out.innerHTML) out.innerHTML='<p>No matches found. Try different preferences.</p>';
+  });
+}
